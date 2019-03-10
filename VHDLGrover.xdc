@@ -18,10 +18,3 @@ set_property PACKAGE_PIN V17 [get_ports {a[0]}]
 
 set_property IOSTANDARD LVCMOS33 [get_ports {clk}]
 set_property PACKAGE_PIN W5 [get_ports {clk}]
-
-set_property IOSTANDARD LVCMOS33 [get_ports {rst}]
-set_property PACKAGE_PIN R2 [get_ports {rst}]
-
-set_property IOSTANDARD LVCMOS33 [get_ports {ghoishd}]
-set_property PACKAGE_PIN W3 [get_ports {ghoishd}]
-
