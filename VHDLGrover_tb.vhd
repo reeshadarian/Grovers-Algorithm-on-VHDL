@@ -9,40 +9,31 @@ architecture tb of VHDLGrover_tb is
     COMPONENT VHDLGrover PORT(
         b: out std_logic_vector (2 downto 0);
         a: in std_logic_vector (2 downto 0);
-        clk: in std_logic;
-        rst: in std_logic
+        clk: in std_logic
     );
     END COMPONENT;
     signal check: std_logic;
     signal b: std_logic_vector (2 downto 0);
     signal a: std_logic_vector (2 downto 0) := "000";
-    signal clk: std_logic := '0';
-    signal rst: std_logic := '1';
+    signal clk: std_logic := '1';
 begin
     uut: VHDLGrover PORT MAP (
         b => b,
         a => a,
-        clk => clk,
-        rst => rst
+        clk => clk
     );
     
     process is begin
-        clk <= '0';
-        wait for 1 ns;
         clk <= '1';
+        wait for 1 ns;
+        clk <= '0';
         wait for 1 ns;
     end process;
     
     testproc: process is begin
-        rst <= '1';
         a <= "000";
-        wait until clk'event and clk = '1';
-        rst <= '0';
-        wait for 150 ns;
-        rst <= '1';
+        wait for 100 ns;
         a <= "100";
-        wait until clk'event and clk = '1';
-        rst <= '0';
         wait;
     end process testproc;
     
